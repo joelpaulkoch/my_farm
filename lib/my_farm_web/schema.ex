@@ -22,4 +22,14 @@ defmodule MyFarmWeb.Schema do
       resolve(&Resolvers.Account.find_farmer/3)
     end
   end
+
+  mutation do
+    @desc "Create a farm"
+    field :create_farm, type: :farm do
+      arg(:name, non_null(:string))
+      arg(:owner, non_null(:string))
+
+      resolve(&Resolvers.Farm.create_farm/3)
+    end
+  end
 end
