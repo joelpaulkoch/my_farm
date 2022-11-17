@@ -31,5 +31,12 @@ defmodule MyFarmWeb.Schema do
 
       resolve(&Resolvers.Farm.create_farm/3)
     end
+
+    @desc "Create a farmer"
+    field :create_farmer, type: :farmer do
+      arg(:name, non_null(:string))
+
+      resolve(&Resolvers.Account.create_farmer/3)
+    end
   end
 end

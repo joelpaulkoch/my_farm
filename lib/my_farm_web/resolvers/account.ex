@@ -9,4 +9,8 @@ defmodule MyFarmWeb.Resolvers.Account do
       farmer -> {:ok, farmer}
     end
   end
+
+  def create_farmer(_parent, args, _resolution) do
+    MyFarm.Accounts.create_farmer(args)
+  end
 end
