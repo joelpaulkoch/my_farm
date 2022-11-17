@@ -20,6 +20,16 @@ defmodule MyFarm.AccountsTest do
       assert Accounts.get_farmer!(farmer.id) == farmer
     end
 
+    test "find_farmer/1 returns the farmer with given id" do
+      farmer = farmer_fixture()
+      assert Accounts.find_farmer(farmer.id) == farmer
+    end
+
+    test "find_farmer/1 returns nil when there is no farmer with given id" do
+      id = 0
+      assert Accounts.find_farmer(0) == nil
+    end
+
     test "create_farmer/1 with valid data creates a farmer" do
       valid_attrs = %{name: "some name"}
 
