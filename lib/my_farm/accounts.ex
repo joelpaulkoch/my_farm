@@ -38,6 +38,20 @@ defmodule MyFarm.Accounts do
   def get_farmer!(id), do: Repo.get!(Farmer, id)
 
   @doc """
+  Finds a single farmer.
+
+  Returns nil if the Farmer does not exist.
+
+  ## Examples
+      iex> find_farmer(123)
+      %Farmer{}
+
+      iex> find_farmer(456)
+      nil
+  """
+  def find_farmer(id), do: Repo.get(Farmer, id)
+
+  @doc """
   Creates a farmer.
 
   ## Examples

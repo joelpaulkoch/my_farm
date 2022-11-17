@@ -15,5 +15,11 @@ defmodule MyFarmWeb.Schema do
     field :farmers, list_of(:farmer) do
       resolve(&Resolvers.Account.list_farmers/3)
     end
+
+    @desc "Get farmer by id"
+    field :farmer, :farmer do
+      arg(:id, non_null(:id))
+      resolve(&Resolvers.Account.find_farmer/3)
+    end
   end
 end
