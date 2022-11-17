@@ -20,10 +20,16 @@ defmodule MyFarmWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", MyFarmWeb do
-  #   pipe_through :api
-  # end
+  scope "/api" do
+    pipe_through :api
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: MyFarmWeb.Schema,
+      interface: :simple,
+      context: %{pubsub: MyFarmWeb.Endpoint}
+
+    forward "/", Absinthe.Plug, schema: MyFarmWeb.Schema
+  end
 
   # Enables LiveDashboard only for development
   #
