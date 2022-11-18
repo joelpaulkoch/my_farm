@@ -11,8 +11,7 @@ defmodule MyFarm.FarmsFixtures do
     {:ok, farm} =
       attrs
       |> Enum.into(%{
-        name: "some name",
-        owner: "some owner"
+        name: "some name"
       })
       |> MyFarm.Farms.create_farm()
 

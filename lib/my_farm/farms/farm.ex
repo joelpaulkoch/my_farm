@@ -4,7 +4,6 @@ defmodule MyFarm.Farms.Farm do
 
   schema "farms" do
     field :name, :string
-    field :owner, :string
 
     timestamps()
   end
@@ -12,7 +11,7 @@ defmodule MyFarm.Farms.Farm do
   @doc false
   def changeset(farm, attrs) do
     farm
-    |> cast(attrs, [:name, :owner])
-    |> validate_required([:name, :owner])
+    |> cast(attrs, [:name])
+    |> validate_required([:name])
   end
 end

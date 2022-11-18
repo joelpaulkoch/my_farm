@@ -8,7 +8,7 @@ defmodule MyFarm.FarmsTest do
 
     import MyFarm.FarmsFixtures
 
-    @invalid_attrs %{name: nil, owner: nil}
+    @invalid_attrs %{name: nil}
 
     test "list_farms/0 returns all farms" do
       farm = farm_fixture()
@@ -21,11 +21,10 @@ defmodule MyFarm.FarmsTest do
     end
 
     test "create_farm/1 with valid data creates a farm" do
-      valid_attrs = %{name: "some name", owner: "some owner"}
+      valid_attrs = %{name: "some name"}
 
       assert {:ok, %Farm{} = farm} = Farms.create_farm(valid_attrs)
       assert farm.name == "some name"
-      assert farm.owner == "some owner"
     end
 
     test "create_farm/1 with invalid data returns error changeset" do
@@ -34,11 +33,10 @@ defmodule MyFarm.FarmsTest do
 
     test "update_farm/2 with valid data updates the farm" do
       farm = farm_fixture()
-      update_attrs = %{name: "some updated name", owner: "some updated owner"}
+      update_attrs = %{name: "some updated name"}
 
       assert {:ok, %Farm{} = farm} = Farms.update_farm(farm, update_attrs)
       assert farm.name == "some updated name"
-      assert farm.owner == "some updated owner"
     end
 
     test "update_farm/2 with invalid data returns error changeset" do

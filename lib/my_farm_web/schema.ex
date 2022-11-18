@@ -27,7 +27,6 @@ defmodule MyFarmWeb.Schema do
     @desc "Create a farm"
     field :create_farm, type: :farm do
       arg(:name, non_null(:string))
-      arg(:owner, non_null(:string))
 
       resolve(&Resolvers.Farm.create_farm/3)
     end

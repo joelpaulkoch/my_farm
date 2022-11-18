@@ -4,9 +4,9 @@ defmodule MyFarmWeb.FarmLiveTest do
   import Phoenix.LiveViewTest
   import MyFarm.FarmsFixtures
 
-  @create_attrs %{name: "some name", owner: "some owner"}
-  @update_attrs %{name: "some updated name", owner: "some updated owner"}
-  @invalid_attrs %{name: nil, owner: nil}
+  @create_attrs %{name: "some name"}
+  @update_attrs %{name: "some updated name"}
+  @invalid_attrs %{name: nil}
 
   defp create_farm(_) do
     farm = farm_fixture()
