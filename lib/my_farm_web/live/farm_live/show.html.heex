@@ -1,0 +1,31 @@
+<h1>Show Farm</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.farm_show_path(@socket, :show, @farm)}>
+    <.live_component
+      module={MyFarmWeb.FarmLive.FormComponent}
+      id={@farm.id}
+      title={@page_title}
+      action={@live_action}
+      farm={@farm}
+      return_to={Routes.farm_show_path(@socket, :show, @farm)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @farm.name %>
+  </li>
+
+  <li>
+    <strong>Owner:</strong>
+    <%= @farm.owner %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.farm_show_path(@socket, :edit, @farm), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.farm_index_path(@socket, :index) %></span>

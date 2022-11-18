@@ -18,6 +18,13 @@ defmodule MyFarmWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    live "/farms", FarmLive.Index, :index
+    live "/farms/new", FarmLive.Index, :new
+    live "/farms/:id/edit", FarmLive.Index, :edit
+
+    live "/farms/:id", FarmLive.Show, :show
+    live "/farms/:id/show/edit", FarmLive.Show, :edit
   end
 
   scope "/api" do

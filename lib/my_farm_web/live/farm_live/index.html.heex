@@ -1,0 +1,41 @@
+<h1>Listing Farms</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <.modal return_to={Routes.farm_index_path(@socket, :index)}>
+    <.live_component
+      module={MyFarmWeb.FarmLive.FormComponent}
+      id={@farm.id || :new}
+      title={@page_title}
+      action={@live_action}
+      farm={@farm}
+      return_to={Routes.farm_index_path(@socket, :index)}
+    />
+  </.modal>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Owner</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="farms">
+    <%= for farm <- @farms do %>
+      <tr id={"farm-#{farm.id}"}>
+        <td><%= farm.name %></td>
+        <td><%= farm.owner %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.farm_show_path(@socket, :show, farm) %></span>
+          <span><%= live_patch "Edit", to: Routes.farm_index_path(@socket, :edit, farm) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: farm.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Farm", to: Routes.farm_index_path(@socket, :new) %></span>
