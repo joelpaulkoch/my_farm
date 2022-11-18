@@ -4,6 +4,6 @@ defmodule MyFarmWeb.Schema.FarmTypes do
   object :farm do
     field :id, :id
     field :name, :string
-    field :owner, :string
+    field :farmer, :string
   end
 end
